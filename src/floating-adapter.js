@@ -28,26 +28,26 @@ function setPrecision(Floating, n) {
   precision = n;
 }
 
-function plus(floating, x) {
-  return floating.plus(x);
+function plus(x, y) {
+  return x.plus(y);
 }
 
-function minus(floating, x) {
-  return floating.minus(x);
+function minus(x, y) {
+  return x.minus(y);
 }
 
-function times(floating, x) {
-  return floating.times(x);
+function times(x, y) {
+  return x.times(y);
 }
 
-function div(floating, x) {
-  return floating.div(x);
+function div(x, y) {
+  return x.div(y);
 }
 
-function toString(floating) {
-  return floating.toString();
+function toString(x) {
+  return x.toString();
 }
 
-function valueOf(floating) {
-  return floating.valueOf();
+function valueOf(x) {
+  return x.valueOf();
 }
