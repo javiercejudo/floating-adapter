@@ -5,12 +5,12 @@
 require('should');
 
 var decimalFactory = require('linear-arbitrary-precision');
+var powExtender = require('pow-arbitrary-precision');
 var adapter = require('../src/floating-adapter');
-var Floating = require('floating')();
+
+var Decimal = powExtender(adapter, decimalFactory(adapter));
 
 describe('linear operations with floating', function() {
-  var Decimal = decimalFactory(adapter);
-
   describe('constructor', function() {
     it('should throw if called without new', function() {
       (function() {
@@ -61,8 +61,8 @@ describe('linear operations with floating', function() {
     });
 
     it('should have a pow method', function() {
-      adapter.pow(new Floating(2), new Floating(3)).valueOf().should.be.exactly(8);
-      adapter.pow(new Floating(81), new Floating(0.5)).valueOf().should.be.exactly(9);
+      new Decimal('2').pow(new Decimal('3')).valueOf().should.be.exactly(8);
+      new Decimal('81').pow(new Decimal('0.5')).valueOf().should.be.exactly(9);
     });
   });
 
