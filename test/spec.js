@@ -6,6 +6,7 @@ require('should');
 
 var decimalFactory = require('linear-arbitrary-precision');
 var adapter = require('../src/floating-adapter');
+var Floating = require('floating')();
 
 describe('linear operations with floating', function() {
   var Decimal = decimalFactory(adapter);
@@ -57,6 +58,11 @@ describe('linear operations with floating', function() {
 
     it('should have a div method', function() {
       new Decimal('0.3').div(new Decimal('0.2')).valueOf().should.be.exactly(0.3 / 0.2);
+    });
+
+    it('should have a pow method', function() {
+      adapter.pow(new Floating(2), new Floating(3)).valueOf().should.be.exactly(8);
+      adapter.pow(new Floating(81), new Floating(0.5)).valueOf().should.be.exactly(9);
     });
   });
 

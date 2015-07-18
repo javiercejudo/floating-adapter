@@ -12,6 +12,7 @@ module.exports = {
   minus: minus,
   times: times,
   div: div,
+  pow: pow,
   toString: toString,
   valueOf: valueOf,
   parseInput: Number
@@ -42,6 +43,10 @@ function times(x, y) {
 
 function div(x, y) {
   return x.div(y);
+}
+
+function pow(x, y) {
+  return x.pow(y);
 }
 
 function toString(x) {
