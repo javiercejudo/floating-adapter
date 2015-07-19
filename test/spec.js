@@ -4,11 +4,10 @@
 
 require('should');
 
-var decimalFactory = require('linear-arbitrary-precision');
-var powExtender = require('pow-arbitrary-precision');
+var decimalFactory = require('arbitrary-precision');
 var adapter = require('../src/floating-adapter');
 
-var Decimal = powExtender(adapter, decimalFactory(adapter));
+var Decimal = decimalFactory(adapter);
 
 describe('linear operations with floating', function() {
   describe('constructor', function() {
