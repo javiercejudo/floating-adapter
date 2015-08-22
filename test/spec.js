@@ -63,6 +63,11 @@ describe('linear operations with floating', function() {
       new Decimal('2').pow(new Decimal('3')).valueOf().should.be.exactly(8);
       new Decimal('81').pow(new Decimal('0.5')).valueOf().should.be.exactly(9);
     });
+
+    it('should have an equals method', function() {
+      adapter.equals(new Decimal('2').val(), new Decimal('2').val()).should.be.exactly(true);
+      adapter.equals(new Decimal('2').val(), new Decimal('3').val()).should.be.exactly(false);
+    });
   });
 
   describe('toString, valueOf and JSON', function() {
