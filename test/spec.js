@@ -8,11 +8,13 @@ var decimalFactory = require('arbitrary-precision');
 var adapter = require('../src/floating-adapter');
 
 var Decimal = decimalFactory(adapter);
+var Floating = adapter.getInstance();
 
 describe('linear operations with floating', function() {
   describe('constructor', function() {
     it('should throw if called without new', function() {
       (function() {
+        /*jshint -W064*/
         Decimal('1');
       }).should.throw();
     });
@@ -59,6 +61,14 @@ describe('linear operations with floating', function() {
       new Decimal('0.3').div(new Decimal('0.2')).valueOf().should.be.exactly(0.3 / 0.2);
     });
 
+    it('should have a mod method', function() {
+      adapter.mod(new Floating(12), new Floating(5)).valueOf().should.be.exactly(2);
+    });
+
+    it('should have a mod method', function() {
+      adapter.sqrt(new Floating(16)).valueOf().should.be.exactly(4);
+    });
+
     it('should have a pow method', function() {
       new Decimal('2').pow(new Decimal('3')).valueOf().should.be.exactly(8);
       new Decimal('81').pow(new Decimal('0.5')).valueOf().should.be.exactly(9);
@@ -67,6 +77,41 @@ describe('linear operations with floating', function() {
     it('should have an equals method', function() {
       adapter.equals(new Decimal('2').val(), new Decimal('2').val()).should.be.exactly(true);
       adapter.equals(new Decimal('2').val(), new Decimal('3').val()).should.be.exactly(false);
+    });
+
+    it('should have a gt method', function() {
+      adapter.gt(new Floating(2), new Floating(2)).valueOf().should.be.exactly(false);
+      adapter.gt(new Floating(2), new Floating(3)).valueOf().should.be.exactly(false);
+      adapter.gt(new Floating(2), new Floating(1)).valueOf().should.be.exactly(true);
+    });
+
+    it('should have a gte method', function() {
+      adapter.gte(new Floating(2), new Floating(2)).valueOf().should.be.exactly(true);
+      adapter.gte(new Floating(2), new Floating(3)).valueOf().should.be.exactly(false);
+      adapter.gte(new Floating(2), new Floating(1)).valueOf().should.be.exactly(true);
+    });
+
+    it('should have a lt method', function() {
+      adapter.lt(new Floating(2), new Floating(2)).valueOf().should.be.exactly(false);
+      adapter.lt(new Floating(2), new Floating(3)).valueOf().should.be.exactly(true);
+      adapter.lt(new Floating(2), new Floating(1)).valueOf().should.be.exactly(false);
+    });
+
+    it('should have a lte method', function() {
+      adapter.lte(new Floating(2), new Floating(2)).valueOf().should.be.exactly(true);
+      adapter.lte(new Floating(2), new Floating(3)).valueOf().should.be.exactly(true);
+      adapter.lte(new Floating(2), new Floating(1)).valueOf().should.be.exactly(false);
+    });
+
+    it('should have a cmp method', function() {
+      adapter.cmp(new Floating(2), new Floating(2)).valueOf().should.be.exactly(0);
+      adapter.cmp(new Floating(2), new Floating(3)).valueOf().should.be.exactly(-1);
+      adapter.cmp(new Floating(2), new Floating(1)).valueOf().should.be.exactly(1);
+    });
+
+    it('should have a abs method', function() {
+      adapter.abs(new Floating(16)).valueOf().should.be.exactly(16);
+      adapter.abs(new Floating(-5)).valueOf().should.be.exactly(5);
     });
   });
 
