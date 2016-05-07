@@ -65,7 +65,7 @@ describe('linear operations with floating', function() {
       adapter.mod(new Floating(12), new Floating(5)).valueOf().should.be.exactly(2);
     });
 
-    it('should have a mod method', function() {
+    it('should have an sqrt method', function() {
       adapter.sqrt(new Floating(16)).valueOf().should.be.exactly(4);
     });
 
@@ -80,27 +80,27 @@ describe('linear operations with floating', function() {
     });
 
     it('should have a gt method', function() {
-      adapter.gt(new Floating(2), new Floating(2)).valueOf().should.be.exactly(false);
-      adapter.gt(new Floating(2), new Floating(3)).valueOf().should.be.exactly(false);
-      adapter.gt(new Floating(2), new Floating(1)).valueOf().should.be.exactly(true);
+      adapter.gt(new Floating(2), new Floating(2)).should.be.exactly(false);
+      adapter.gt(new Floating(2), new Floating(3)).should.be.exactly(false);
+      adapter.gt(new Floating(2), new Floating(1)).should.be.exactly(true);
     });
 
     it('should have a gte method', function() {
-      adapter.gte(new Floating(2), new Floating(2)).valueOf().should.be.exactly(true);
-      adapter.gte(new Floating(2), new Floating(3)).valueOf().should.be.exactly(false);
-      adapter.gte(new Floating(2), new Floating(1)).valueOf().should.be.exactly(true);
+      adapter.gte(new Floating(2), new Floating(2)).should.be.exactly(true);
+      adapter.gte(new Floating(2), new Floating(3)).should.be.exactly(false);
+      adapter.gte(new Floating(2), new Floating(1)).should.be.exactly(true);
     });
 
     it('should have a lt method', function() {
-      adapter.lt(new Floating(2), new Floating(2)).valueOf().should.be.exactly(false);
-      adapter.lt(new Floating(2), new Floating(3)).valueOf().should.be.exactly(true);
-      adapter.lt(new Floating(2), new Floating(1)).valueOf().should.be.exactly(false);
+      adapter.lt(new Floating(2), new Floating(2)).should.be.exactly(false);
+      adapter.lt(new Floating(2), new Floating(3)).should.be.exactly(true);
+      adapter.lt(new Floating(2), new Floating(1)).should.be.exactly(false);
     });
 
     it('should have a lte method', function() {
-      adapter.lte(new Floating(2), new Floating(2)).valueOf().should.be.exactly(true);
-      adapter.lte(new Floating(2), new Floating(3)).valueOf().should.be.exactly(true);
-      adapter.lte(new Floating(2), new Floating(1)).valueOf().should.be.exactly(false);
+      adapter.lte(new Floating(2), new Floating(2)).should.be.exactly(true);
+      adapter.lte(new Floating(2), new Floating(3)).should.be.exactly(true);
+      adapter.lte(new Floating(2), new Floating(1)).should.be.exactly(false);
     });
 
     it('should have a cmp method', function() {
