@@ -1,6 +1,6 @@
 {
   "name": "floating-adapter",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "floating adapter for linear-arbitrary-precision",
   "main": "src/floating-adapter.js",
   "scripts": {
